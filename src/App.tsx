@@ -20,6 +20,7 @@ function SpotlightCard({ children, className = "", ...props }: any) {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
+      whileHover={{ y: -2 }}
       className={`tech-border group overflow-hidden ${className}`}
       {...props}
     >
@@ -91,7 +92,7 @@ export default function App() {
                 <p className="text-geek-green mb-2 text-lg tracking-widest">[ROLE: AI_PRODUCT_MANAGER]</p>
                 
                 <p className="text-sm text-white/70 tracking-wide mb-4 transition-colors duration-500 group-hover:text-white/90">
-                  以体验为灵魂，以技术为骨骼，构建 AI 产品新范式
+                  以体验为灵魂，以技术为骨骼，构建AI产品新范式
                 </p>
                 
                 <div className="flex flex-row flex-wrap gap-6 md:gap-8 text-sm text-white/70 border-t border-white/10 pt-4 transition-colors duration-500 group-hover:border-white/20">
@@ -127,10 +128,29 @@ export default function App() {
                 enCompany="Ping An Tech"
                 role="AI产品经理"
                 project="员工万能服务"
-                description="主导智能化服务升级，重塑企业内部服务体验，打造下一代智能办公范式。"
+                description="四大场景智能化升级，重塑企业内部办公服务体验，打造下一代智能办公范式"
                 delay={0.2}
                 details={[
-                  { title: "敬请期待", content: "" }
+                  { title: "项目背景", content: "推动办公软件升级为对话式AI助手，为平安集团32万员工构建\"万能服务\"AI办公工作台，通过\"行政、人事、财务、培训\"场景升级，全面整合员工服务、数据，以极简对话交互完成核心场景下的\"问、查、办\"全链路一键办理。" },
+                  { title: "场景功能设计", content: "独立负责人事、财务共10场景全链路设计，涵盖对话流程、槽位定义、交互逻辑及跨部门需求对齐；系统梳理各场景边界规则，结合意图识别与槽位填充机制，将复杂业务压缩为低门槛对话式办理流程。" },
+                  { title: "结构化prompt", content: "针对复杂业务逻辑，通过结构化指令实现高精度意图识别、多维槽位信息提取及任务自动化；采用模块化架构，核心包含：角色、目标、规则及输出等模块。" },
+                  { title: "场景功能测试", content: "独立撰写核心测试用例集，对badcase按意图识别、槽位提取、规则校验、异常回复、上下文丢失五类错误进行归因分类，标注理想回复结果并同步研发修复。" },
+                  { title: "对话跟踪引导", content: "通过结构化存储历史意图与槽位结果，支持模型在用户增量表达时，实现跨场景信息自动复用；业务完成后根据业务规则与模型判断触发推荐，引导至下一步可执行服务，构建完整服务闭环。" },
+                  { title: "项目结果", content: "意图准确率90%（目标95%），服务完成率52.76%，端到端响应时间4.28秒（5.7秒）。" }
+                ]}
+              />
+              <ExperienceItem 
+                company="平安科技"
+                enCompany="Ping An Tech"
+                role="AI产品经理"
+                project="AI 保险规划师"
+                description="基于大模型构建个性化智能导购体系，重塑保险配置体验，驱动业务高效转化。"
+                delay={0.3}
+                details={[
+                  { title: "项目背景", content: "针对传统人工客服高成本低转化，以及存在用户信任屏障的痛点。通过智能选保和产品解读功能，构建6大非车险种的智能导购体系，为用户提供个性化的保险建议，目标通过智小安达成非车保费1.5亿。" },
+                  { title: "AI家庭保障", content: "定义基于角色/年龄/地区/收入特征，基于用户特征，利用大模型构建千人千面的产品组合推荐引擎，针对生命周期三阶段的差异化推荐医疗/意外/重疾保障方案；目标提升3%AI转化率，月保费400万（323万）。" },
+                  { title: "语义摘要优化", content: "通过LLM构建“检索-提炼-结论”链路，利用结构化 Prompt 自动总结保险产品保障内容。" },
+                  { title: "导购策略", content: "将泛化式话术升级为“浏览记录/热点新闻/推荐产品/通用话术”的个性化模板，AB测试显示转化率提升2.3%。" }
                 ]}
               />
               <ExperienceItem 
@@ -139,13 +159,12 @@ export default function App() {
                 role="AI产品经理"
                 project="智能客服"
                 description="打造标杆级智能客服解决方案，实现商业价值与用户体验的双重跃升。"
-                delay={0.3}
+                delay={0.4}
                 details={[
-                  { title: "项目背景", content: "面对企业用户对多轮对话精准度和长尾意图识别率的更高要求，客悦智能客服平台，深化大模型在多模态交互、意图识别、自动化运营中的应用，提升企业客户服务与营销一体化能力。" },
-                  { title: "数据采集与问题定位", content: "整合企业产品文档、客服工单、对话日志等多源数据，分析点踩及后台数据从badcase中定位“需求忽略、需求曲解、缺失关联需求”三类问题，同步搭建聚焦答复率、准确率的核心指标统计看板。" },
-                  { title: "知识库搭建", content: "预处理多源数据后，采用摘要式为主、关键词提取与模版抽取为辅的方式，筛选高价值信息，重点聚焦业务核心场景。基于文心大模型从文档中提取QA对并丰富问题的多样性，进而实现问题的多重扩展，保证问题的召回命中率。对10万条历史对话进行语义向量化，通过聚类算法(如DBSCAN)生成高频问题标签，完成历史对话聚类分析。" },
-                  { title: "意图识别", content: "利用大模型语义理解能力，设计三层树状意图体系，顶层区分业务模块，中层场景细分，底层具体应答策略。通过RAG技术，将知识库与实时更新的行业数据关联，增强长尾问题回答能力。搭建自动化优化机制，完成用户反馈闭环，定期评估知识库覆盖率与回答准确率，优化大模型Prompt模板。" },
-                  { title: "项目成果", content: "完成5大业务场景、生成1000+标准QA对、8000+扩展QA对的知识沉淀，覆盖90%以上高频咨询场景，标准问回复准确率97%。转人工率下降至27%，客户满意度提升至92%(78%)。" }
+                  { title: "项目背景", content: "针对传统人工客服效率低，成本高的痛点，基于客悦智能客服平台搭建知识库与意图体系提升客户服务。" },
+                  { title: "知识库搭建", content: "对多源数据整合与预处理，基于大模型从文档中提取QA对，针对模糊表述生成多版本问法进行知识改写。" },
+                  { title: "意图识别", content: "设计三层树状意图体系，顶层区分业务模块，中层场景细分具体方向，底层具体意图。" },
+                  { title: "项目成果", content: "覆盖90%以上高频咨询场景，标准问回复准确率97%。转人工率下降至27%。" }
                 ]}
               />
               <ExperienceItem 
@@ -154,15 +173,12 @@ export default function App() {
                 role="AI产品经理"
                 project="ChatBI"
                 description="探索前沿数据交互范式，赋能企业级商业智能决策，引领数据分析的智能化变革。"
-                delay={0.4}
+                delay={0.5}
                 details={[
-                  { title: "项目背景", content: "针对销售管理部业务人员数据获取与分析链路长、耗时多的痛点，开发ChatBI问答式数据分析平台，通过自然语言交互实现数据可视化的即时生成与业务问题的智能归因。" },
-                  { title: "市场调研与指标搭建", content: "调研析言GBI、腾讯ChatBI产品明确产品定位与技术实现。与业务方梳理数据指标与分析维度字典。" },
-                  { title: "智能问答交互", content: "参与设计NL2SQL的转化链条，包括语义理解、意图识别、意图澄清和归因分析的路径，当意图清晰后生成伪SQL校验，最终SQL执行与可视化展示并归因分析。" },
+                  { title: "项目背景", content: "针对销售部业务人员数据获取与分析链路长、耗时多的痛点，开发ChatBI问答式数据分析平台，包括语义理解、意图识别、意图澄清和归因分析的路径。通过自然语言交互实现数据可视化的即时生成与业务问题的智能归因。" },
                   { title: "语义理解优化", content: "设计知识名词、同义词与业务术语配置模块，大幅提升语义解析的准确率至80%。引导模型多维理解。" },
-                  { title: "用户体验优化", content: "引入引导式提问与智能追问设计，降低用户提问门槛，提升深度分析准确率。" },
-                  { title: "深度分析功能", content: "针对核心管理指标，设计系列深度分析Prompt，在此基础上结合人工分析思路与框架开展深度归因分析，通过根据结果智能推测子问题，引导用户进行连续深度分析，形成完整的分析链路。同时实现结构化数据分析报告的自动化输出。" },
-                  { title: "项目成果", content: "产品问答准确率超过85%，大大提升业务人员每日数据获取与分析效率。成功覆盖核心业务模块80%数据分析需求。产品嵌入到企业CRM中用于销售分析，商业化已有100+客户采购。研发管理看板在各事业部领导层落地使用。" }
+                  { title: "深度分析功能", content: "针对核心管理指标，设计系列深度分析Prompt，在此基础上结合人工分析框架开展深度归因分析，通过根据结果智能推测子问题，引导用户进行连续深度分析，形成完整的分析链路。同时实现结构化数据分析报告的自动化输出。" },
+                  { title: "项目成果", content: "产品问答准确率超过85%，覆盖核心业务模块80%数据分析需求" }
                 ]}
               />
             </div>
@@ -183,7 +199,7 @@ export default function App() {
                 subtitle="AI 科普文章自动化生成系统"
                 description="基于大语言模型的端到端内容生成引擎，实现高质量科普内容的规模化、标准化生产。"
                 number="0x01"
-                delay={0.5}
+                delay={0.6}
                 link="https://www.ycwrite.online/"
               />
               <ProjectCard 
@@ -191,7 +207,7 @@ export default function App() {
                 subtitle="知识库智能问答系统"
                 description="构建私有知识库检索与问答中枢，提供低幻觉、高准确率的专属问答体验"
                 number="0x02"
-                delay={0.6}
+                delay={0.7}
                 link="https://buddybase.netlify.app/"
               />
               <ProjectCard 
@@ -199,7 +215,7 @@ export default function App() {
                 subtitle="智能职业发展辅助平台"
                 description="针对产品经理的AI简历优化平台，帮助用户快速识别简历短板并生成优化建议"
                 number="0x03"
-                delay={0.7}
+                delay={0.8}
                 link="https://pm-resume-ai-tool.netlify.app/"
               />
             </div>
@@ -219,7 +235,7 @@ export default function App() {
           <SpotlightCard 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.2 }}
             className="p-6 md:p-8"
           >
@@ -270,7 +286,7 @@ function ExperienceItem({ company, enCompany, role, project, description, delay,
     <SpotlightCard 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ delay, duration: 0.5 }}
       className={`p-6 md:p-8 ${details ? 'cursor-pointer' : ''}`}
       onClick={() => details && setIsExpanded(!isExpanded)}
@@ -320,7 +336,7 @@ function ProjectCard({ title, subtitle, description, number, delay, link }: { ti
     <SpotlightCard 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ delay, duration: 0.5 }}
       className={`p-6 md:p-8 flex flex-col h-full ${link ? 'cursor-pointer' : ''}`}
     >

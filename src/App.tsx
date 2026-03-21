@@ -218,6 +218,14 @@ export default function App() {
                 delay={0.8}
                 link="https://pm-resume-ai-tool.netlify.app/"
               />
+              <ProjectCard 
+                title="合同智能审核系统"
+                subtitle="智能合同风控与审核平台"
+                description="基于大模型的智能合同审核系统，实现合同条款自动比对、风险识别与合规审查，大幅提升法务工作效率。"
+                number="0x04"
+                delay={0.9}
+                link="https://pcn41la219k8.feishu.cn/wiki/Hm86wEVuFiX7gIkTYHhcwEfenjc"
+              />
             </div>
           </section>
 

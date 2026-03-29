@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Terminal, Cpu, Database, Code, QrCode, ChevronRight, User } from "lucide-react";
+import { Terminal, Cpu, Database, Code, QrCode, ChevronRight, User, ExternalLink } from "lucide-react";
 import Background3D from "./components/Background3D";
 
 function SpotlightCard({ children, className = "", ...props }: any) {
@@ -44,11 +44,16 @@ export default function App() {
       <Background3D />
       <div className="scanline"></div>
       <svg width="0" height="0" className="absolute pointer-events-none">
-        <filter id="water-ripple">
-          <feTurbulence type="fractalNoise" baseFrequency="0.02 0.1" numOctaves="2" result="noise">
-            <animate attributeName="baseFrequency" from="0.02 0.1" to="0.03 0.15" dur="3s" repeatCount="indefinite" alternate="true" />
+        <filter id="water-ripple" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" result="noise">
+            <animate 
+              attributeName="baseFrequency" 
+              values="0.01 0.05; 0.012 0.07; 0.01 0.05" 
+              dur="8s" 
+              repeatCount="indefinite" 
+            />
           </feTurbulence>
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
         </filter>
       </svg>
       
@@ -76,7 +81,7 @@ export default function App() {
             <SpotlightCard 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="p-8 md:p-12 relative"
+              className="p-8 md:p-12 relative group bg-black/10 border-white/5 backdrop-blur-sm"
             >
               <div className="absolute -right-10 -top-10 opacity-5 pointer-events-none transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-12">
                 <User size={300} />
@@ -86,9 +91,19 @@ export default function App() {
                 <div className="text-geek-cyan text-xs mb-4 flex items-center gap-2">
                   <ChevronRight size={14} className="transition-transform duration-500 group-hover:translate-x-1" /> INITIATING_USER_PROFILE...
                 </div>
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-2 transition-all duration-500 group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]">
-                  <span className="pixel-gradient-text">杨京川</span> <span className="blink text-geek-cyan">_</span>
-                </h1>
+                
+                <div className="relative inline-block mb-2">
+                  {/* Camera Scan Overlay - Focused on Name */}
+                  <div className="absolute -inset-x-4 -inset-y-2 pointer-events-none z-20">
+                    <div className="camera-scan-line"></div>
+                    <div className="camera-scan-glow"></div>
+                  </div>
+
+                  <h1 className="text-5xl md:text-7xl font-bold tracking-tighter transition-all duration-500 group-hover:drop-shadow-[0_0_20px_rgba(0,255,255,0.6)] relative z-10">
+                    <span className="pixel-glitch-text">杨京川</span> <span className="blink text-geek-cyan">_</span>
+                  </h1>
+                </div>
+
                 <p className="text-geek-green mb-2 text-lg tracking-widest">[ROLE: AI_PRODUCT_MANAGER]</p>
                 
                 <p className="text-sm text-white/70 tracking-wide mb-4 transition-colors duration-500 group-hover:text-white/90">
@@ -201,6 +216,7 @@ export default function App() {
                 number="0x01"
                 delay={0.6}
                 link="https://www.ycwrite.online/"
+                secondaryLink="https://pcn41la219k8.feishu.cn/wiki/FW0Gw4WlNiPTMykUP30cxXLpnic?from=from_copylink"
               />
               <ProjectCard 
                 title="BuddyBase"
@@ -209,6 +225,7 @@ export default function App() {
                 number="0x02"
                 delay={0.7}
                 link="https://buddybase.netlify.app/"
+                secondaryLink="https://pcn41la219k8.feishu.cn/wiki/GbrXw8Y20io53XkmrndcJW8anQd?from=from_copylink"
               />
               <ProjectCard 
                 title="AI 简历优化助手"
@@ -217,6 +234,7 @@ export default function App() {
                 number="0x03"
                 delay={0.8}
                 link="https://pm-resume-ai-tool.netlify.app/"
+                secondaryLink="https://pcn41la219k8.feishu.cn/wiki/TuKmwa04ZiR4aTkIicLcbhS2nTd?from=from_copylink"
               />
               <ProjectCard 
                 title="合同智能审核系统"
@@ -224,7 +242,7 @@ export default function App() {
                 description="基于大模型的智能合同审核系统，实现合同条款自动比对、风险识别与合规审查，大幅提升法务工作效率。"
                 number="0x04"
                 delay={0.9}
-                link="https://pcn41la219k8.feishu.cn/wiki/Hm86wEVuFiX7gIkTYHhcwEfenjc"
+                secondaryLink="https://pcn41la219k8.feishu.cn/wiki/Hm86wEVuFiX7gIkTYHhcwEfenjc"
               />
             </div>
           </section>
@@ -339,39 +357,50 @@ function ExperienceItem({ company, enCompany, role, project, description, delay,
   );
 }
 
-function ProjectCard({ title, subtitle, description, number, delay, link }: { title: string, subtitle: string, description: string, number: string, delay: number, link?: string }) {
-  const CardContent = (
+function ProjectCard({ title, subtitle, description, number, delay, link, secondaryLink }: { title: string, subtitle: string, description: string, number: string, delay: number, link?: string, secondaryLink?: string }) {
+  return (
     <SpotlightCard 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay, duration: 0.5 }}
-      className={`p-6 md:p-8 flex flex-col h-full ${link ? 'cursor-pointer' : ''}`}
+      className="p-6 md:p-8 flex flex-col h-full group"
     >
       <div className="flex justify-between items-center mb-4">
         <div className="text-white/30 text-sm tracking-widest font-bold transition-colors duration-500 group-hover:text-geek-cyan/70">[{number}]</div>
         <Code size={18} className="text-white/30 transition-all duration-500 group-hover:text-geek-cyan group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(0,255,255,0.6)]" />
       </div>
+      
       <div className="transform transition-transform duration-500 group-hover:translate-x-2">
         <h3 className="text-xl md:text-2xl text-white font-bold mb-2 transition-all duration-500 group-hover:text-geek-cyan group-hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.4)]">{title}</h3>
         <h4 className="text-geek-green text-sm mb-4">{subtitle}</h4>
       </div>
+      
       <p className="text-white/70 text-sm md:text-base leading-relaxed flex-grow transition-colors duration-500 group-hover:text-white/90">
         {description}
       </p>
-      <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-sm text-white/30 transition-all duration-500 group-hover:text-geek-cyan group-hover:border-white/20">
-        <ChevronRight size={16} className="transition-transform duration-500 group-hover:translate-x-1" /> EXECUTE_MODULE
+      
+      <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-4 items-center">
+        {link && (
+          <button
+            onClick={() => window.open(link, '_blank', 'noopener,noreferrer')}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm font-bold text-white/40 hover:text-geek-cyan hover:bg-geek-cyan/10 hover:border-geek-cyan/30 transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,255,0.1)] group/btn"
+          >
+            <ChevronRight size={18} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
+            访问项目
+          </button>
+        )}
+        
+        {secondaryLink && (
+          <button
+            onClick={() => window.open(secondaryLink, '_blank', 'noopener,noreferrer')}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-sm font-medium text-white/40 hover:text-geek-cyan hover:bg-geek-cyan/10 hover:border-geek-cyan/30 transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,255,0.1)] group/btn"
+          >
+            <ExternalLink size={16} className="transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:-translate-y-0.5" />
+            演示说明
+          </button>
+        )}
       </div>
     </SpotlightCard>
   );
-
-  if (link) {
-    return (
-      <a href={link} target="_blank" rel="noopener noreferrer" className="block h-full">
-        {CardContent}
-      </a>
-    );
-  }
-
-  return CardContent;
 }

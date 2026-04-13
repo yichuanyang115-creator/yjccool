@@ -113,11 +113,11 @@ export default function App() {
                 <div className="flex flex-row flex-wrap gap-6 md:gap-8 text-sm text-white/70 border-t border-white/10 pt-4 transition-colors duration-500 group-hover:border-white/20">
                   <div className="flex items-center gap-2">
                     <span className="text-white/40">TEL:</span>
-                    <a href="tel:17766542666" className="hover:text-geek-cyan transition-colors text-base">177 6654 2666</a>
+                    <a href="tel:18646117719" className="hover:text-geek-cyan transition-colors text-base">186 4611 7719</a>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-white/40">EMAIL:</span>
-                    <a href="mailto:17766542666@163.com" className="hover:text-geek-cyan transition-colors text-base">17766542666@163.com</a>
+                    <a href="mailto:yichuan115@163.com" className="hover:text-geek-cyan transition-colors text-base">yichuan115@163.com</a>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-white/40">LOC:</span>
@@ -146,12 +146,12 @@ export default function App() {
                 description="四大场景智能化升级，重塑企业内部办公服务体验，打造下一代智能办公范式"
                 delay={0.2}
                 details={[
-                  { title: "项目背景", content: "推动办公软件升级为对话式AI助手，为平安集团32万员工构建\"万能服务\"AI办公工作台，通过\"行政、人事、财务、培训\"场景升级，全面整合员工服务、数据，以极简对话交互完成核心场景下的\"问、查、办\"全链路一键办理。" },
-                  { title: "场景功能设计", content: "独立负责人事、财务共10场景全链路设计，涵盖对话流程、槽位定义、交互逻辑及跨部门需求对齐；系统梳理各场景边界规则，结合意图识别与槽位填充机制，将复杂业务压缩为低门槛对话式办理流程。" },
-                  { title: "结构化prompt", content: "针对复杂业务逻辑，通过结构化指令实现高精度意图识别、多维槽位信息提取及任务自动化；采用模块化架构，核心包含：角色、目标、规则及输出等模块。" },
-                  { title: "场景功能测试", content: "独立撰写核心测试用例集，对badcase按意图识别、槽位提取、规则校验、异常回复、上下文丢失五类错误进行归因分类，标注理想回复结果并同步研发修复。" },
-                  { title: "对话跟踪引导", content: "通过结构化存储历史意图与槽位结果，支持模型在用户增量表达时，实现跨场景信息自动复用；业务完成后根据业务规则与模型判断触发推荐，引导至下一步可执行服务，构建完整服务闭环。" },
-                  { title: "项目结果", content: "意图准确率90%（目标95%），服务完成率52.76%，端到端响应时间4.28秒（5.7秒）。" }
+                  { title: "项目背景", content: "推动办公软件升级为对话式 AI 助手，为平安集团 32 万员工构建\"万能服务\"AI 办公工作台，通过\"行政、人事、财务、培训\"场景升级，全面整合员工服务、数据，以极简对话交互完成核心场景下的\"问、查、办\"全链路一键办理。" },
+                  { title: "场景功能设计", content: "跨部门完成需求对齐，主导负责人事、财务共10场景全链路设计，涵盖意图识别、槽位提取、交互逻辑、prompt设计及功能测试；通过系统梳理各场景边界规则，将复杂业务压缩为低门槛对话式办理流程。" },
+                  { title: "结构化prompt", content: "采用角色、规则、示例、输出和限制等模块化架构实现高精度意图识别、多槽位信息提取及任务自动化。" },
+                  { title: "场景功能测试", content: "独立撰写核心测试用例集，对badcase按意图、槽位、规则、回复、丢失五类错误进行归因分类。" },
+                  { title: "对话跟踪引导", content: "通过结构化存储历史意图与槽位结果，支持模型在用户增量表达时，实现任务链路内槽位复用；业务完成后根据业务规则与模型判断触发推荐，引导至下一步可执行服务，构建完整服务闭环。" },
+                  { title: "项目结果", content: "意图准确率92%（目标95%），服务完成率52.76%，端到端响应时间4.28秒（5.7秒）。" }
                 ]}
               />
               <ExperienceItem 
@@ -169,17 +169,17 @@ export default function App() {
                 ]}
               />
               <ExperienceItem 
-                company="百度客悦"
-                enCompany="Baidu"
-                role="AI产品经理"
-                project="智能客服"
-                description="打造标杆级智能客服解决方案，实现商业价值与用户体验的双重跃升。"
+                company="唯品会"
+                enCompany="Vipshop"
+                role="策略产品经理"
+                project="用户增长 (Push 策略)"
+                description="深度整合厂商生态与 AI 能力，构建千人千面 Push 策略体系，驱动用户活跃与点击效率双重增长。"
                 delay={0.4}
                 details={[
-                  { title: "项目背景", content: "针对传统人工客服效率低，成本高的痛点，基于客悦智能客服平台搭建知识库与意图体系提升客户服务。" },
-                  { title: "知识库搭建", content: "对多源数据整合与预处理，基于大模型从文档中提取QA对，针对模糊表述生成多版本问法进行知识改写。" },
-                  { title: "意图识别", content: "设计三层树状意图体系，顶层区分业务模块，中层场景细分具体方向，底层具体意图。" },
-                  { title: "项目成果", content: "覆盖90%以上高频咨询场景，标准问回复准确率97%。转人工率下降至27%。" }
+                  { title: "项目背景", content: "为提升Push覆盖人群和点击率、降低用户侧疲劳度、提升运营效率，部门与安卓手机厂商建立商务合作，并接入厂商生态的能力，同时结合AI能力实现批量化、个性化文案生成。北极星指标：首唤人数；" },
+                  { title: "策略搭建", content: "针对低活人群设计爆款商品通投策略；基于用户行为的商品召回，通过变量内嵌设计个性化Push策略，实现千人千面推送；与算法团队协作优化Push素材分发模型。策略覆盖度90%+，点击率1.37%（0.74%）。" },
+                  { title: "平台能力建设", content: "厂商商业化通道接入投放平台（策略设置、厂商权限、素材配置、轮播配置）；建设素材AB实验能力。" },
+                  { title: "AI生成与轮播", content: "选择适配电商文案生成模型，并构建多变量结构化Prompt，确保AI生成文案适配多场景，保持高质量多样性文案持续生成。设计自动轮播能力，实现“配置要求→AI批量生成文案→人工圈选投放→自动轮播”；将AI生成接入PUSH素材语料库，同时回流投放数据，持续优化AI模型。功能上线后，素材AI化100%，点击效率提升10%+；" }
                 ]}
               />
               <ExperienceItem 
